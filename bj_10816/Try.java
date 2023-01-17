@@ -2,7 +2,7 @@ package bj_10816;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {    
+public class Try {    
     public static void main(String[] args) {
 
         Scanner stdIn = new Scanner(System.in);
