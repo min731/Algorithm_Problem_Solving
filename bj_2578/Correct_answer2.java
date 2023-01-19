@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class per54{
+public class Correct_answer2{
 
     static int [][] makeBoard(int board [][],BufferedReader br,BufferedWriter bw) throws IOException{
 
@@ -45,11 +45,14 @@ public class per54{
         int cnt = 0;
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+        int bingo = 0;
+        Boolean dia1 = true;
+        Boolean dia2 = true;
 
         for (int i=0;i<check.length;i++){
-
+            System.out.println(i + "번째 check: " + check[i]);
+            System.out.println(cnt);
             cnt ++;
-            int bingo = 0;
             Boolean find = false;
             for(int j=0;j<5;j++){
                 for(int k=0;k<5;k++){
@@ -57,6 +60,12 @@ public class per54{
                     if (board[j][k] == check[i]){
                         board[j][k] = -1;
                         find = true;
+
+                        bw.write("빙고판"+"\n");
+                        for (int m=0;m<5;m++){
+                            bw.write(Arrays.toString(board[m])+"\n");
+                        }
+                        bw.flush();
 
                         if(find){
                             break;
@@ -68,42 +77,59 @@ public class per54{
                 }
             }
 
-            int [] diagonal = new int [5];
+            int [] diagonal1 = new int [5];
+            int [] diagonal2 = new int [5];
             int [] vertical = new int [5];
-            int idx_dia = 0;
+            int idx_dia1 = 0;
+            int idx_dia2 = 0;
 
             for(int j=0;j<5;j++){
                 int idx_ver = 0;
-
-                //  가로선 빙고 체크
                 if(Arrays.stream(board[j]).sum()==-5){
+                    System.out.println("가로선 빙고!");
                     bingo ++;
                 }
                 
                 for(int k=0;k<5;k++){
+                    if(j==k){
+                        diagonal1[idx_dia1] = board[j][k];
+                        idx_dia1++;
+                    }
+
                     if(j+k==4){
-                        diagonal[idx_dia] = board[j][k];
-                        idx_dia++;
+                        diagonal2[idx_dia2] = board[j][k];
+                        idx_dia2++;
                     }
                     vertical[idx_ver] = board[k][j];
                     idx_ver++;
                 }
-
-                //세로선 빙고 체크
                 if(Arrays.stream(vertical).sum()==-5){
+                    System.out.println("세로선 빙고!");
                     bingo ++;
                 }
             }
 
-            // 오->왼 대각선 빙고 체크
-            if(Arrays.stream(diagonal).sum()==-5){
-                bingo++;
+            if (dia1){
+                if(Arrays.stream(diagonal1).sum()==-5){
+                    System.out.println("왼->오 빙고!");
+                    dia1 = false;
+                    bingo++;
+                }
+
             } 
 
+            if(dia2){
+                if(Arrays.stream(diagonal2).sum()==-5){
+                    System.out.println("오->왼 빙고!");
+                    dia2 = false;
+                    bingo++;
+                } 
+            }
+
+            System.out.println("빙고 점수:" + bingo);
             if (bingo>=3){
                 break;
             }
-            System.out.println(i + "번째 일때 빙고: " + bingo);
         }
 
         return cnt;

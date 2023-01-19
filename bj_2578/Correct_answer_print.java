@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class per54{
+public class Correct_answer_print{
 
     static int [][] makeBoard(int board [][],BufferedReader br,BufferedWriter bw) throws IOException{
 
@@ -47,7 +47,8 @@ public class per54{
 
 
         for (int i=0;i<check.length;i++){
-
+            System.out.println(i + "번째 check: " + check[i]);
+            System.out.println(cnt);
             cnt ++;
             int bingo = 0;
             Boolean find = false;
@@ -57,6 +58,12 @@ public class per54{
                     if (board[j][k] == check[i]){
                         board[j][k] = -1;
                         find = true;
+
+                        bw.write("빙고판"+"\n");
+                        for (int m=0;m<5;m++){
+                            bw.write(Arrays.toString(board[m])+"\n");
+                        }
+                        bw.flush();
 
                         if(find){
                             break;
@@ -74,9 +81,8 @@ public class per54{
 
             for(int j=0;j<5;j++){
                 int idx_ver = 0;
-
-                //  가로선 빙고 체크
                 if(Arrays.stream(board[j]).sum()==-5){
+                    System.out.println("가로선 빙고!");
                     bingo ++;
                 }
                 
@@ -88,22 +94,21 @@ public class per54{
                     vertical[idx_ver] = board[k][j];
                     idx_ver++;
                 }
-
-                //세로선 빙고 체크
                 if(Arrays.stream(vertical).sum()==-5){
+                    System.out.println("세로선 빙고!");
                     bingo ++;
                 }
             }
 
-            // 오->왼 대각선 빙고 체크
             if(Arrays.stream(diagonal).sum()==-5){
+                System.out.println("오->왼 빙고!");
                 bingo++;
             } 
 
+            System.out.println("빙고 점수:" + bingo);
             if (bingo>=3){
                 break;
             }
-            System.out.println(i + "번째 일때 빙고: " + bingo);
         }
 
         return cnt;
