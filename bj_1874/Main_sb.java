@@ -1,14 +1,12 @@
 package bj_1874;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Main {
+public class Main_sb {
 
     static Stack<Integer> makeStack(BufferedReader br) throws NumberFormatException, IOException {
 
@@ -25,7 +23,7 @@ public class Main {
 
     static void getAns(Stack<Integer> stack1, BufferedReader br) throws NumberFormatException, IOException {
 
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
         Stack<Integer> stack2 = new Stack<>();
         stack2.push(0);
         ArrayList list1 = new ArrayList<>();
@@ -47,15 +45,13 @@ public class Main {
                     return;
                 }
                 stack2.push(stack1.pop());
-                bw.write("+");
-                bw.newLine();
+                sb.append("+"+"\n");
             }
             stack2.pop();
-            bw.write("-");
-            bw.newLine();
+            sb.append("-"+"\n");
         }
 
-        bw.flush();
+        System.out.println(sb.toString());
         return;
 
     }
