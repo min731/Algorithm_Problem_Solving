@@ -108,29 +108,28 @@ public class Main {
     }
 
     static void getAns(ArrayList<String> list1, ringQue ringQue) throws IOException {
-        StringBuilder sb = new StringBuilder();
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         for (String command : list1) {
-            String cmd = command.replaceAll("[0-9]", "");
+            String cmd = command.substring(0, 3);
 
             switch (cmd) {
-                case "push":
-                    ringQue.push(Integer.parseInt(command.replaceAll("[^0-9]", "")));
+                case "pus":
+                    ringQue.push(Integer.parseInt(command.substring(4)));
                     break;
                 case "pop":
                     bw.write(ringQue.pop() + "\n");
                     break;
-                case "size":
+                case "siz":
                     bw.write(ringQue.size() + "\n");
                     break;
-                case "empty":
+                case "emp":
                     bw.write(ringQue.empty() + "\n");
                     break;
-                case "front":
+                case "fro":
                     bw.write(ringQue.front() + "\n");
                     break;
-                case "back":
+                case "bac":
                     bw.write(ringQue.back() + "\n");
                     break;
             }
