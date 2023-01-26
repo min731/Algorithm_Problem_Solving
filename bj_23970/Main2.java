@@ -16,29 +16,31 @@ public class Main2 {
             return 1;
         }
 
-        int same = n - 1;
+        int last = n - 1;
+        int last2 = 0;
         for (int i = 0; i < n - 1; i++) {
-            System.out.println("same: " + same);
-            if (same == 0) {
+            System.out.println("last: " + last);
+            if (last == 0) {
                 break;
             }
             int check = 0;
-            for (int j = i; j < same; j++) {
+            for (int j = 0; j < last; j++) {
                 if (A[j] > A[j + 1]) {
                     swap(A, j, j + 1);
                     check++;
                     System.out.println("--배열 비교--");
                     System.out.println(Arrays.toString(A));
                     System.out.println(Arrays.toString(B));
-                    same = j;
+                    last2 = j;
                     if (Arrays.equals(A, B)) {
                         return 1;
                     }
                 }
             }
-            // if (check == 0) {
-            // break;
-            // }
+            last = last2;
+            if (check == 0) {
+                break;
+            }
 
         }
 
