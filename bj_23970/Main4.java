@@ -5,15 +5,12 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main3 {
+public class Main4 {
 
     static int bubble_sort(int[] A, int[] B, int n) {
-
-        ArrayList<String> sortProcesses = new ArrayList<>();
 
         if (Arrays.equals(A, B)) {
             return 1;
@@ -28,10 +25,13 @@ public class Main3 {
                     swap(A, j, j + 1);
                     check++;
                     last = j + 1;
-                    sortProcesses.add(Arrays.toString(A));
-                    // if (Arrays.equals(A, B)) {
-                    // return 1;
-                    // }
+
+                    // 정렬 할 때 마다 비교
+                    System.out.println(Arrays.toString(A) +" vs "+(Arrays.toString(B)));
+                    if(Arrays.toString(A).equals(Arrays.toString(B))){
+                        return 1;
+                    }
+
                 }
             }
             same = last;
@@ -39,14 +39,6 @@ public class Main3 {
             break;
             }
 
-        }
-
-        System.out.println(Arrays.deepToString(sortProcesses.toArray()));
-        for (String Process:sortProcesses){
-            System.out.println("A:" + Process +" B: "+Arrays.toString(B));
-            if(Process.equals(Arrays.toString(B))){
-                return 1;
-            }
         }
 
         return 0;
