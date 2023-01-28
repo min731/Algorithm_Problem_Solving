@@ -8,40 +8,40 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main4 {
+public class Correct {
 
     static int bubble_sort(int[] A, int[] B, int n) {
 
+        // A,B 처음부터 같으면 1
         if (Arrays.equals(A, B)) {
             return 1;
         }
 
-        int same = n - 1;
-        for (int i = 0; i < same; i++) {
-            int last = n-1;
+        // last, last2 : 정렬이 끝난 인덱스는 for문 돌지 않아도 됌
+        int last = n - 1;
+        int last2 = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (last == 0) {
+                break;
+            }
             int check = 0;
-            for (int j = i; j < same - i; j++) {
+            for (int j = 0; j < last; j++) {
                 if (A[j] > A[j + 1]) {
                     swap(A, j, j + 1);
                     check++;
-                    last = j + 1;
+                    last2 = j;
 
-                    if(A[j]==B[j]){
-                        if(Arrays.toString(A).equals(Arrays.toString(B))){
+                    if (A[j] == B[j]) {
+                        if (Arrays.equals(A, B)) {
                             return 1;
                         }
                     }
-                    // 정렬 할 때 마다 비교
-                    System.out.println(Arrays.toString(A) +" vs "+(Arrays.toString(B)));
-                    if(Arrays.toString(A).equals(Arrays.toString(B))){
-                        return 1;
-                    }
-
                 }
             }
-            same = last;
+            last = last2;
+            // 바뀌는 것이 없으면 break;
             if (check == 0) {
-            break;
+                break;
             }
 
         }
