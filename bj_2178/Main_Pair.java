@@ -7,19 +7,19 @@ import java.util.Arrays;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-class Pair{
+class Pair {
 
     int x;
     int y;
 
-    Pair(int x, int y){
+    Pair(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
 }
 
-public class Main2 {
+public class Main_Pair {
 
     static void dfs(int[][][][] graph, int x, int y, boolean[][] visitied, int cnt) {
 
@@ -48,24 +48,20 @@ public class Main2 {
 
         }
     }
-        
 
+    // for (int i = 0; i < moves_x.length; i++) {
+    // if (x + moves_x[i] >= 0 && x + moves_x[i] < graph.length && y + moves_y[i] >=
+    // 0
+    // && y + moves_y[i] < graph[0].length) {
+    // if (visitied[x + moves_x[i]][y + moves_y[i]] == false) {
+    // if (board[x + moves_x[i]][y + moves_y[i]] == 1) {
+    // cnt++;
+    // dfs(board, x + moves_x[i], y + moves_y[i], visitied, cnt);
+    // }
+    // }
 
-
-        // for (int i = 0; i < moves_x.length; i++) {
-        //     if (x + moves_x[i] >= 0 && x + moves_x[i] < graph.length && y + moves_y[i] >= 0
-        //             && y + moves_y[i] < graph[0].length) {
-        //         if (visitied[x + moves_x[i]][y + moves_y[i]] == false) {
-        //             if (board[x + moves_x[i]][y + moves_y[i]] == 1) {
-        //                 cnt++;
-        //                 dfs(board, x + moves_x[i], y + moves_y[i], visitied, cnt);
-        //             }
-        //         }
-
-        //     }
-        // }
-
-    
+    // }
+    // }
 
     public static void main(String[] args) throws IOException {
 
@@ -95,7 +91,7 @@ public class Main2 {
         int cnt = 0;
 
         // 그래프
-        int[][][][] graph = new int[row_num][column_num][4][2];
+        int[][][] graph = new int[row_num][column_num][4];
         int[] moves_x = new int[] { 1, 0, 0, -1 };
         int[] moves_y = new int[] { 0, 1, -1, 0 };
 
@@ -106,8 +102,8 @@ public class Main2 {
                     if (x + moves_x[k] >= 0 && x + moves_x[k] < board.length && y + moves_y[k] >= 0
                             && y + moves_y[k] < board[0].length) {
                         if (board[x + moves_x[k]][y + moves_y[k]] == 1) {
-                            graph[x][y][k][0] = x + moves_x[k];
-                            graph[x][y][k][1] = y + moves_y[k];
+                            Pair pair1 = new Pair(x + moves_x[k], y + moves_y[k]);
+                            graph[x][y][k] = pair1;
                         }
                     }
                     System.out.println(Arrays.toString(graph[x][y][k]));
@@ -115,14 +111,12 @@ public class Main2 {
             }
         }
 
-        
         // root 위치
         int x = 0;
         int y = 0;
 
-
         // 미로 탐색
-        dfs(graph, x, y, visitied,cnt);
+        dfs(graph, x, y, visitied, cnt);
     }
 
 }
