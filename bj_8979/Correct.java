@@ -52,6 +52,7 @@ public class Correct{
         }
 
         System.out.println(rank);
+        
 
     }
 
