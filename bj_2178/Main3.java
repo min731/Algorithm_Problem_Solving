@@ -73,7 +73,7 @@ public class Main3 {
 
         for (int x = 0; x < row_num; x++) {
             for (int y = 0; y < column_num; y++) {
-                System.out.println("-----------"+x+","+y+"-----------");
+                System.out.println("x"+","+"y"+"에서 갈 수 있는 좌표");
                 for (int k = 0; k < moves_x.length; k++) {
                     if (x + moves_x[k] >= 0 && x + moves_x[k] < board.length && y + moves_y[k] >= 0
                             && y + moves_y[k] < board[0].length) {

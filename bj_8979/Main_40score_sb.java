@@ -9,12 +9,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
-public class Main_40score_2 {
+public class Main_40score_sb{
     public static void main(String[] args) throws IOException {
 
         // 입력 받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
         st = new StringTokenizer(br.readLine());
 
@@ -32,9 +33,10 @@ public class Main_40score_2 {
             String medals = "";
             for (int j = 0; j < 3; j++) {
                 // 국가별 금,은,동 입력 받기
-                String medal = st.nextToken();
-                medals += medal;
+                sb.append(st.nextToken());
             }
+            medals = sb.toString();
+            sb.setLength(0);
             map1.put(country, Integer.parseInt(medals));
             System.out.println(medals);
         }
@@ -44,8 +46,10 @@ public class Main_40score_2 {
         for (int value : map1.values()) {
             medals_info.add(value);
         }
+
+        System.out.println("정렬 전:" + Arrays.deepToString(medals_info.toArray()));
         Collections.sort(medals_info, Collections.reverseOrder());
-        System.out.println(Arrays.deepToString(medals_info.toArray()));
+        System.out.println("정렬 후:" + Arrays.deepToString(medals_info.toArray()));
         System.out.println(medals_info.indexOf(map1.get(K)));
         
         // 메달 정렬과 대응되는 등수

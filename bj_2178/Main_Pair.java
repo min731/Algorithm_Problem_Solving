@@ -91,13 +91,14 @@ public class Main_Pair {
         int cnt = 0;
 
         // 그래프
-        int[][][] graph = new int[row_num][column_num][4];
+        int[][] graph = new int[row_num][column_num];
         int[] moves_x = new int[] { 1, 0, 0, -1 };
         int[] moves_y = new int[] { 0, 1, -1, 0 };
 
         for (int x = 0; x < row_num; x++) {
             for (int y = 0; y < column_num; y++) {
                 System.out.println("-----------" + x + "," + y + "-----------");
+                
                 for (int k = 0; k < moves_x.length; k++) {
                     if (x + moves_x[k] >= 0 && x + moves_x[k] < board.length && y + moves_y[k] >= 0
                             && y + moves_y[k] < board[0].length) {
