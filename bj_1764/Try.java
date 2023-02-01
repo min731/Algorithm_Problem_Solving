@@ -19,31 +19,35 @@ public class Try {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        LinkedList<String> be_heard = new LinkedList<>();
-        for(int i=0;i<N;i++){
-            be_heard.add(br.readLine());
+        LinkedList<String> not_be_heard = new LinkedList<>();
+        for (int i = 0; i < N; i++) {
+            not_be_heard.add(br.readLine());
         }
 
-        Collections.sort(be_heard);
+        LinkedList<String> not_be_heard_seen = new LinkedList<>();
+
         // for(int i=0;i<be_heard.size();i++){
-        //     bw.write(be_heard.get(i));
-        //     bw.newLine();
+        // bw.write(be_heard.get(i));
+        // bw.newLine();
         // }
 
-        int cnt = 0;
-        for(int i=0;i<M;i++){
-            String be_seen = br.readLine();
-            if(be_heard.contains(be_seen)){
-                bw.write(be_seen);
-                bw.newLine();
-                cnt++;
+        for (int i = 0; i < M; i++) {
+            String not_be_seen = br.readLine();
+            if (not_be_heard.contains(not_be_seen)) {
+                not_be_heard_seen.add(not_be_seen);
             }
         }
 
-        System.out.println(cnt);
+        bw.write(not_be_heard_seen.size() + "\n");
+
+        Collections.sort(not_be_heard_seen);
+
+        for (int i = 0; i < not_be_heard_seen.size(); i++) {
+            bw.write(not_be_heard_seen.get(i) + "\n");
+        }
 
         bw.flush();
-        
+
     }
-    
+
 }
