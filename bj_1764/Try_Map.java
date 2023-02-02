@@ -7,10 +7,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-public class Try_remove_all {
+public class Try_Map {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -20,33 +22,31 @@ public class Try_remove_all {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        List<String> not_be_heard = new ArrayList<>();
-        List<String> not_be_heard_origin = new ArrayList<>();
+        Map<String,Integer> not_be_heard_seen = new HashMap<>();
+
         for (int i = 0; i < N; i++) {
-            String input = br.readLine();
-
-            not_be_heard.add(input);
-            not_be_heard_origin.add(input);
+            not_be_heard_seen.put(br.readLine(),1);
         }
 
-        List<String> not_be_seen = new ArrayList<>();
         for (int i = 0; i < M; i++) {
-            not_be_seen.add(br.readLine());
+            String input = br.readLine();
+            if(not_be_heard_seen.keySet().contains(input))
+            not_be_heard_seen.put(input,2);
         }
 
-        not_be_heard.removeAll(not_be_seen);
-        not_be_heard_origin.removeAll(not_be_heard);
+        List<String> ANS = new ArrayList<>();
 
-        Collections.sort(not_be_heard_origin);
+        for(Map.Entry<String, Integer> entry : not_be_heard_seen.entrySet()){
+            if(entry.getValue()==2){
+                ANS.add(entry.getKey());
+            }
+        }
+        bw.write(ANS.size() + "\n");
 
-        int n = not_be_heard_origin.size();
+        Collections.sort(ANS);
 
-        bw.write(n + "");
-        bw.newLine();
-
-        for (int i = 0; i < n; i++) {
-            bw.write(not_be_heard_origin.get(i));
-            bw.newLine();
+        for (int i = 0; i < ANS.size(); i++) {
+            bw.write(ANS.get(i) + "\n");
         }
 
         bw.flush();
