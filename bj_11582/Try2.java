@@ -8,14 +8,14 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Try {
+public class Try2 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
-        StringBuffer sb;
+        StringBuffer sb = new StringBuffer();
 
         int n = Integer.parseInt(br.readLine());
         int[] a = new int[n];
@@ -28,32 +28,34 @@ public class Try {
 
         int k = Integer.parseInt(br.readLine());
 
-        String ans;
+        int [][] ans = new int[n / (int) Math.pow(2, k)][n / (int) Math.pow(2, k)/2];
 
         for (int i = 1; i <= k; i++) {
 
-            sb = new StringBuffer();
+            int[][] tmp = new int[n / (int) Math.pow(2, i)][n / (int) Math.pow(2, i)/2];
+            int idx = 0;
 
             for (int j = 0; j < a.length; j += Math.pow(2, i)) {
-                System.out.println("j: " + j);
 
                 int tmp2[] = Arrays.copyOfRange(a, j, j + (int) Math.pow(2, i));
                 Arrays.sort(tmp2);
-                System.out.println(Arrays.toString(tmp2));
-                sb.append(Arrays.toString(tmp2) + " ");
+                tmp[idx++] = tmp2;
 
             }
 
             if (i == k) {
-                ans = sb.toString();
-                ans = ans.replace("[", "");
-                ans = ans.replace("]", "");
-                ans = ans.replace(",", "");
-                bw.write(ans);
-                bw.flush();
-                break;
+                ans = tmp;
             }
         }
+
+        for(int i=0;i<ans.length;i++){
+            for(int j=0; j<ans[0].length;j++){
+                sb.append(ans[i][j]+" ");
+            }
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
 
     }
 
