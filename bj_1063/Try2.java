@@ -45,10 +45,10 @@ public class Try2 {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                board.put(alphabet_str.substring(j, j + 1), null)
+                board.put(alphabet_str.substring(j, j + 1), null);
                 String alphabet = alphabet_str.substring(j, j + 1);
-                board[i][j] = alphabet + num;
-                System.out.println(board[i][j]);
+                // board[i][j] = alphabet + num;
+                // System.out.println(board[i][j]);
             }
         }
 

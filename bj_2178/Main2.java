@@ -31,7 +31,7 @@ public class Main2 {
         }
 
         Stack <int []> stack = new Stack<>();
-        stack.pu
+        // stack.pu
 
         int[] moves_x = new int[] { 1, 0, 0, -1 };
         int[] moves_y = new int[] { 0, 1, -1, 0 };

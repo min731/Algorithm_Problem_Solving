@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -16,7 +15,7 @@ class Pos {
     int y;
 }
 
-public class Try3 {
+public class Main {
 
     static Map<String, Integer> pos_parser = new HashMap<>();
     static Map<String, int[]> cmd_parser = new HashMap<>();
@@ -26,9 +25,6 @@ public class Try3 {
         String alphabet = info.substring(0, 1);
         String num = info.substring(1, 2);
 
-        System.out.println("alphabet: " + alphabet + "num: " + num);
-        System.out.println(pos_parser.get(alphabet));
-
         Pos obj = new Pos();
 
         obj.x = (int) pos_parser.get(alphabet);
@@ -37,10 +33,7 @@ public class Try3 {
         return obj;
     }
 
-    static String str_parser(Pos obj, Map pos_parser){
-
-        // String alphabet = String.valueOf(obj.x);
-        // String num = String.valueOf(obj.y);
+    static String str_parser(Pos obj, Map pos_parser) {
 
         int alphabet = obj.x;
         int num = obj.y;
@@ -50,29 +43,27 @@ public class Try3 {
 
         Boolean find_alphabet = false;
 
-        for(Object key : pos_parser.keySet()){
+        for (Object key : pos_parser.keySet()) {
 
-            if(!find_alphabet){
-                if(pos_parser.get((String)key).equals(alphabet)){
+            if (!find_alphabet) {
+                if (pos_parser.get((String) key).equals(alphabet)) {
                     alphabet_key = (String) key;
-                    find_alphabet =true;
+                    find_alphabet = true;
                 }
             }
-            if(find_alphabet){
-                if(pos_parser.get((String)key).equals(num)){
+            if (find_alphabet) {
+                if (pos_parser.get((String) key).equals(num)) {
                     num_key = (String) key;
                 }
             }
         }
 
-        // System.out.println("str_parser:" + alphabet_key +","+num_key);
-        return alphabet_key+num_key;
+        return alphabet_key + num_key;
     }
 
     static Pos[] move_act(String cmd, Pos[] king_stone, Map cmd_parser) {
 
         int[] cmd_xy = (int[]) cmd_parser.get(cmd);
-        System.out.println("cmd_xy :" + cmd_xy[0] + "," + cmd_xy[1]);
         Pos king = king_stone[0];
         Pos stone = king_stone[1];
 
@@ -87,13 +78,11 @@ public class Try3 {
                 if (next_stone_x >= 0 && next_stone_y >= 0 && next_stone_x <= 7 && next_stone_y <= 7) {
                     stone.x = next_stone_x;
                     stone.y = next_stone_y;
-                }
-                else{
+                } else {
                     return king_stone;
                 }
             }
 
-            System.out.println("king 이동!");
             king.x += cmd_xy[0];
             king.y += cmd_xy[1];
 
@@ -137,7 +126,6 @@ public class Try3 {
             for (int j = 0; j < 8; j++) {
                 board[i][j] = 0;
             }
-            System.out.println(Arrays.toString(board[i]));
         }
 
         // pos_parser(변환 맵) 만들기
@@ -149,9 +137,6 @@ public class Try3 {
             pos_parser.put(num_alpha.substring(i, i + 1), (int) i % 8);
         }
 
-        System.out.println(pos_parser.get("8"));
-        System.out.println(pos_parser.get("A"));
-
         // 킹(1),돌(2) 처음위치로
 
         Pos king = new Pos();
@@ -159,9 +144,6 @@ public class Try3 {
 
         king = xy_parser(info[0], pos_parser);
         stone = xy_parser(info[1], pos_parser);
-
-        board[king.x][king.y] = 1;
-        board[stone.x][stone.y] = 2;
 
         // 이동 명령
 
@@ -185,23 +167,16 @@ public class Try3 {
         cmd_parser.put("LB", LB);
 
         Pos[] king_stone = new Pos[] { king, stone };
-        System.out.println("king :" + king_stone[0].x + "," + king_stone[0].y);
-        System.out.println("stone :" + king_stone[1].x + "," + king_stone[1].y);
         for (String cmd : cmds) {
-            System.out.println("--------------------------");
-            System.out.println(cmd);
             king_stone = move_act(cmd, king_stone, cmd_parser);
-            System.out.println("king :" + king_stone[0].x + "," + king_stone[0].y);
-            System.out.println("stone :" + king_stone[1].x + "," + king_stone[1].y);
-
         }
 
         Pos ans_king = king_stone[0];
         Pos ans_stone = king_stone[1];
 
-        System.out.println("최종 답");
-        System.out.println(str_parser(ans_king, pos_parser));
-        System.out.println(str_parser(ans_stone, pos_parser));
+        bw.write(str_parser(ans_king, pos_parser) + "\n");
+        bw.write(str_parser(ans_stone, pos_parser));
+        bw.flush();
 
     }
 
