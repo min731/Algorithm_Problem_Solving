@@ -48,12 +48,24 @@ for t in range(len(farms)):
         print("현재 좌표 : ", v[0], v[1])
 
         visited[t][v[0]][v[1]] = True
+
+        for j in range(len(farms[t])):
+        # print(farms[i][j])
+            print(visited[t][j])
         
         for i in range(4):
             # print(v[0] + dx[i], v[1] + dy[i])
             if v[0] + dx[i] >= 0 and v[0] + dx[i] < length and v[1] + dy[i] >= 0 and v[1] + dy[i] < width :
                 if not visited[t][v[0] + dx[i]][v[1] + dy[i]]:
                     queue.append([v[0] + dx[i], v[1] + dy[i]])
-                    visited[t][v[0] + dx[i]][v[1] + dy[i]] = True
+                    # visited[t][v[0] + dx[i]][v[1] + dy[i]] = True
+
 
     print(ans)
+
+
+for i in range(T):
+    print("----------")
+    for j in range(len(farms[i])):
+        # print(farms[i][j])
+        print(visited[i][j])
