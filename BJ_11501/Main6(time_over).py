@@ -15,5 +15,4 @@ for i in range(T):
             ans += sum(sorted_stock[-1]-k for k in buy)
             sorted_stock.pop()
             buy = []
-
     print(ans)

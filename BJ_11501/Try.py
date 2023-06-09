@@ -15,8 +15,8 @@ for i in range(T):
         if act[-1] >= max(stocks[j + 1 :]):
             print("판매 시점 :", act[-1], stocks[j + 1 :])
             # output2 = list(map(lambda x:x -1, a))
-            print(list(map(lambda x: act[-1]-x, act[:-1])))
-            ans = ans + sum(list(map(lambda x: act[-1]-x, act[:-1])))
+            print(list(map(lambda x: act[-1] - x, act[:-1])))
+            ans = ans + sum(list(map(lambda x: act[-1] - x, act[:-1])))
             act = []
-            print("현재 값 : ",ans)
+            print("현재 값 : ", ans)
     print("최대값 : ", ans)
