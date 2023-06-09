@@ -36,36 +36,58 @@ for t in range(len(farms)):
     ans = 0
     add = 0
     queue = deque([[0, 0]])
-    # visited[t][0][0] = True
+    visited[t][0][0] = True
+    last_v = [0,0]
+    ans_list = []
 
     if farms[t][0][0] == 1:
-        ans = 1
+        ans_list.append([0,0])
 
     while queue:
 
         print("queue : ",queue) 
         v = queue.popleft()
         print("현재 좌표 : ", v[0], v[1])
-
-        visited[t][v[0]][v[1]] = True
-
-        for j in range(len(farms[t])):
-        # print(farms[i][j])
-            print(visited[t][j])
         
         for i in range(4):
-            # print(v[0] + dx[i], v[1] + dy[i])
             if v[0] + dx[i] >= 0 and v[0] + dx[i] < length and v[1] + dy[i] >= 0 and v[1] + dy[i] < width :
                 if not visited[t][v[0] + dx[i]][v[1] + dy[i]]:
-                    queue.append([v[0] + dx[i], v[1] + dy[i]])
-                    # visited[t][v[0] + dx[i]][v[1] + dy[i]] = True
+                    if farms[t][v[0] + dx[i]][v[1] + dy[i]] == 1:
+                        queue.appendleft([v[0] + dx[i], v[1] + dy[i]])
+                        ans_list.append([v[0] + dx[i], v[1] + dy[i]])
+                    else:
+                        queue.append([v[0] + dx[i], v[1] + dy[i]])
+                    visited[t][v[0] + dx[i]][v[1] + dy[i]] = True
 
+        last_v = v
 
+    last_x0 = ans_list[0][0]
+    last_x1 = ans_list[0][1]
+
+    if len(ans_list) == 1:
+        ans = 1
+        print(ans)
+        break
+
+    ans_list = sorted(ans_list)
+
+    for idx,x in enumerate(ans_list):
+        # if idx == 0:
+        #     ans = 1
+        if idx == len(ans_list)-1:
+            break
+        if (abs(ans_list[idx][0] - ans_list[idx+1][0]) == 1 and ans_list[idx][1] - ans_list[idx+1][1] == 0) or (ans_list[idx][0] - ans_list[idx+1][0] == 0 and abs(ans_list[idx][1] - ans_list[idx+1][1]) == 1) :
+            continue
+        print()
+        print("ans 추가 : ", idx,x)
+        ans += 1
+
+    print(ans_list)
     print(ans)
 
 
-for i in range(T):
-    print("----------")
-    for j in range(len(farms[i])):
-        # print(farms[i][j])
-        print(visited[i][j])
+# for i in range(T):
+#     print("----------")
+#     for j in range(len(farms[i])):
+#         # print(farms[i][j])
+#         print(visited[i][j])
