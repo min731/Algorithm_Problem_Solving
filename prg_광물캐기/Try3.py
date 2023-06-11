@@ -45,20 +45,20 @@ def solution(picks, minerals):
                             tmp_tired += 5**(i-mineral)
 
                 queue.append([tmp_picks,tmp_minerals,tmp_tired])
-                # print(queue)
+                print(queue)
                 if sum(tmp_picks) == 0 or len(tmp_minerals) == 0:
                     picks , mineral,tired = queue.pop()
 
-                    # print("완료 picks , mineral,tired ",tmp_picks , tmp_minerals,tmp_tired)
+                    print("완료 picks , mineral,tired ",tmp_picks , tmp_minerals,tmp_tired)
 
                     if tmp_tired < min_tired:
                         min_tired = tmp_tired
 
-        # print("--------------------")
+        print("--------------------")
         
     answer = min_tired
     
-    # print(answer)
+    print(answer)
     return answer
 
 

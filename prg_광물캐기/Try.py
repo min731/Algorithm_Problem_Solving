@@ -1,6 +1,5 @@
 def solution(picks, minerals):
     from collections import deque
-    import copy
     
     answer = 0
     
@@ -18,20 +17,20 @@ def solution(picks, minerals):
             minerals[i] = 2
     
     minerals = deque(minerals)
-    queue = deque([[picks,minerals,0]])
+    stack = [[picks,minerals,0]]
     
-    while queue:
+    while stack:
         
-        picks , minerals,tired = queue.popleft()
+        picks , minerals,tired = stack.pop()
 
         # print("곡괭이들 : ",picks)
         
         for i in range(len(picks)):
             # 다이아/철/돌 곡괭이 순서대로 캐기
 
-            tmp_picks = copy.deepcopy(picks)
-            tmp_minerals = copy.deepcopy(minerals)
-            tmp_tired = copy.deepcopy(tired)
+            tmp_picks = picks
+            tmp_minerals = minerals
+            tmp_tired = tired
 
             if tmp_picks[i] > 0:
                 tmp_picks[i] -= 1
@@ -44,21 +43,24 @@ def solution(picks, minerals):
                         else:
                             tmp_tired += 5**(i-mineral)
 
-                queue.append([tmp_picks,tmp_minerals,tmp_tired])
-                # print(queue)
-                if sum(tmp_picks) == 0 or len(tmp_minerals) == 0:
-                    picks , mineral,tired = queue.pop()
+                stack.append([tmp_picks,tmp_minerals,tmp_tired])
+                print(stack)
 
-                    # print("완료 picks , mineral,tired ",tmp_picks , tmp_minerals,tmp_tired)
+        print("--------------------")
+            
+        print("곡괭이들 : ",picks)
+        
+        if sum(picks) == 0 or len(minerals) == 0:
+            picks , mineral,tired = stack.pop()
 
-                    if tmp_tired < min_tired:
-                        min_tired = tmp_tired
+            print("완료 picks , mineral,tired ",picks , mineral,tired)
 
-        # print("--------------------")
+            if tired < min_tired:
+                min_tired = tired
         
     answer = min_tired
     
-    # print(answer)
+    print(answer)
     return answer
 
 

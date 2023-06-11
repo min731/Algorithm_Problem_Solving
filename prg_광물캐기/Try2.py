@@ -45,22 +45,25 @@ def solution(picks, minerals):
                             tmp_tired += 5**(i-mineral)
 
                 queue.append([tmp_picks,tmp_minerals,tmp_tired])
-                # print(queue)
-                if sum(tmp_picks) == 0 or len(tmp_minerals) == 0:
-                    picks , mineral,tired = queue.pop()
+                print(queue)
 
-                    # print("완료 picks , mineral,tired ",tmp_picks , tmp_minerals,tmp_tired)
+        print("--------------------")
+            
+        print("곡괭이들 : ",picks)
+        
+        if sum(picks) == 0 or len(minerals) == 0:
+            picks , mineral,tired = queue.pop()
 
-                    if tmp_tired < min_tired:
-                        min_tired = tmp_tired
+            print("완료 picks , mineral,tired ",picks , mineral,tired)
 
-        # print("--------------------")
+            if tired < min_tired:
+                min_tired = tired
         
     answer = min_tired
     
-    # print(answer)
+    print(answer)
     return answer
 
 
-solution([1, 3, 2],["diamond", "diamond", "diamond", "iron", "iron", "diamond", "iron", "stone"])
-# solution([0, 1, 1],["diamond", "diamond", "diamond", "diamond", "diamond", "iron", "iron", "iron", "iron", "iron", "diamond"])
+# solution([1, 3, 2],["diamond", "diamond", "diamond", "iron", "iron", "diamond", "iron", "stone"])
+solution([0, 1, 1],["diamond", "diamond", "diamond", "diamond", "diamond", "iron", "iron", "iron", "iron", "iron", "diamond"])
