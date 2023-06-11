@@ -14,13 +14,6 @@ for i in range(T):
 
         farms[i][x][y] = 1
 
-# 농장 입력 확인
-# for i in range(T):
-#     print("----------")
-#     for j in range(len(farms[i])):
-#         print(farms[i][j])
-#         print(visited[i][j])
-
 from collections import deque
 
 # 상우하좌
@@ -72,8 +65,7 @@ for t in range(len(farms)):
     ans_list = sorted(ans_list)
 
     for idx,x in enumerate(ans_list):
-        # if idx == 0:
-        #     ans = 1
+
         if idx == len(ans_list)-1:
             break
         if (abs(ans_list[idx][0] - ans_list[idx+1][0]) == 1 and ans_list[idx][1] - ans_list[idx+1][1] == 0) or (ans_list[idx][0] - ans_list[idx+1][0] == 0 and abs(ans_list[idx][1] - ans_list[idx+1][1]) == 1) :
