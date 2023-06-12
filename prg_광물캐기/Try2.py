@@ -5,7 +5,7 @@ def solution(picks, minerals):
     answer = 0
     
     # 다이아*돌 곡괭이로 모두 캘 때
-    min_tired = 50*25
+    min_tired = 25*5*5
     
     # 문자 => 숫자
     
