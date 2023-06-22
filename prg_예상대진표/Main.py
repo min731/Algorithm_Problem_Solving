@@ -5,8 +5,6 @@ def solution(n,a,b):
 
     for i in range(1,n+1):
         people.append(i)
-    
-    print(people)
 
     cnt = 0
 
@@ -16,19 +14,14 @@ def solution(n,a,b):
         if abs(people.index(a)-people.index(b)) == 1:
                 if people.index(a) > people.index(b):
                      if people.index(a)%2==1:
-                        print(a,b,cnt)
                         break
                 else:
                      if people.index(b)%2==1:
-                        print(a,b,cnt)
                         break
-
-        print(a,b,cnt)
 
         length = len(people)
 
         for i in range(0,length,2):
-            print("i",i,"people",people)
             if people[i+1] == a:
                 people.append(people[i+1])
                 continue
@@ -38,8 +31,6 @@ def solution(n,a,b):
             people.append(people[i])
 
         people = people[length:]
-
-        print(people)
 
     answer = cnt
 
