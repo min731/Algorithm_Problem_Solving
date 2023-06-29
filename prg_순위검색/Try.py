@@ -20,8 +20,6 @@ def solution(info, query):
     
         print(par_inf)
 
-    
-
     return answer
 
 solution(["java backend junior pizza 150",

@@ -80,21 +80,41 @@ def solution(info, query):
         tmp_q.append(int(q[-1]))
 
         par_q.append(tmp_q)
-
-    for q in par_q:
-
-        left , right = 0,len(info)
-
-        left = lower_bound(par_inf,q)
-        right = upper_bound(par_inf,q) 
-
-        print("ans : ", right - left)
-
+    
     print(par_q)
 
+    for q in par_q:
+        left, right = lower_upper(par_inf,q)
+        answer.append(right-left)
 
     return answer
 
+def lower_upper(par_inf,q):
+
+    left, right = 0,len(par_inf)
+
+    for i in range(4):
+        print("i항목 : ",i)
+        print(q[i])
+        if q[i] == -1:
+            continue
+
+        while left<right:
+
+            if left == 1 and right == 2:
+                exit()
+            mid = (left+right)//2
+            if par_inf[mid][i] < q[i]:
+                left = mid
+            else:
+                right = mid-1
+
+            print("left : ",left,"right : ",right)
+
+    print("answer : ",right-left,"명")
+
+    return left, right
+            
 solution(["java backend junior pizza 150",
           "python frontend senior chicken 210",
           "python frontend senior chicken 150",
