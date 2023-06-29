@@ -84,38 +84,84 @@ def solution(info, query):
     print(par_q)
 
     for q in par_q:
-        left, right = lower_upper(par_inf,q)
-        answer.append(right-left)
+        print("-------------------------------")
+        left = lowerbound(par_inf,q)
+        right = upperbound(par_inf,q)
 
-    return answer
+        tmp_inf = par_inf[left+1:right]
 
-def lower_upper(par_inf,q):
+        print("tmp_inf : ",tmp_inf)
+        print(" -- 점수 --")
 
-    left, right = 0,len(par_inf)
-
-    for i in range(4):
-        print("i항목 : ",i)
-        print(q[i])
-        if q[i] == -1:
-            continue
+        left , right = 0,len(tmp_inf)
 
         while left<right:
-
-            if left == 1 and right == 2:
-                exit()
-            mid = (left+right)//2
-            if par_inf[mid][i] < q[i]:
-                left = mid
-            else:
-                right = mid-1
-
-            print("left : ",left,"right : ",right)
-
-    print("answer : ",right-left,"명")
-
-    return left, right
             
-solution(["java backend junior pizza 150",
+            mid = (left+right)//2
+            print("left : ",left, " mid : ",mid, "right : ",right)
+            if q[4] <= tmp_inf[mid][4] :
+                right = mid
+            else:
+                if left < 0 :
+                    break
+                left = mid+1
+
+            # print("left : ",left, " mid : ",mid, "right : ",right)
+
+        print("left : ",left," right : ",right)
+
+        answer.append(right+1-left)
+
+    print(answer)
+    return answer
+
+[[0, 0, 1, 1, 260], [1, 0, 0, 0, 80], [1, 0, 0, 1, 150], [2, 0, 1, 0, 50], [2, 1, 1, 0, 150], [2, 1, 1, 0, 210]]
+[[1, 0, 0, 1, 100], [2, 1, 1, 0, 200], [0, -1, 1, 1, 250], [-1, 0, 1, -1, 150], [-1, -1, -1, 0, 100], [-1, -1, -1, -1, 150]]
+
+def lowerbound(par_inf, q):
+
+    start, end = 0, len(par_inf)
+
+    for i in range(4):
+
+        if q[i] == -1:
+            continue
+        
+        while start < end:
+            mid = (start+end)//2
+            print("q[i] <= par_inf[mid][i]",q[i] ,par_inf[mid][i])
+            if q[i] <= par_inf[mid][i]:
+                end=mid
+            else:
+                start=mid+1
+    print("start : ",start,", end :",end)
+
+    return start
+
+def upperbound(par_inf, q):
+
+    start, end = 0, len(par_inf)
+
+    for i in range(4):
+
+        if q[i] == -1:
+            continue
+        
+        while start < end:
+            mid = (start+end)//2
+            print("q[i] <= par_inf[mid][i]",q[i] ,par_inf[mid][i])
+            if q[i] < par_inf[mid][i]:
+                end=mid
+            else:
+                start=mid+1
+
+    print("start : ",start,", end :",end)
+    
+    return start
+
+solution(
+
+        ["java backend junior pizza 150",
           "python frontend senior chicken 210",
           "python frontend senior chicken 150",
           "cpp backend senior pizza 260",
