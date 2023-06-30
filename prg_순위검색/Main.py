@@ -15,7 +15,11 @@ def solution(information, queries):
     dic = defaultdict(list)
     for info in information:
         info = info.split()
+        
+        # 조건
         condition = info[:-1]  
+        
+        # 점수
         score = int(info[-1])
         for i in range(5):
             case = list(combinations([0,1,2,3], i))
@@ -23,17 +27,16 @@ def solution(information, queries):
             for c in case:
                 print(c)
                 tmp = condition.copy()
-                print(tmp)
                 for idx in c:
                     tmp[idx] = "-"
+                print(tmp)
                 key = ''.join(tmp)
-                dic[key].append(score) 
-    print(dic)
+                dic[key].append(score)
+                print(dic)
+                print("---------------")
 
     for value in dic.values():
         value.sort()   
-
-    print(value)
 
     for query in queries:
         query = query.replace("and ", "")

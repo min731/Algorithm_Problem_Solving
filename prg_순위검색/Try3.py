@@ -70,7 +70,9 @@ def solution(info, query):
 
             # print("left : ",left, " mid : ",mid, "right : ",right)
 
+        ans_inf = tmp_inf[left:right+1]
         print("left : ",left," right : ",right)
+        print("ans_inf : ",ans_inf )
 
         answer.append(right+1-left)
 
@@ -82,7 +84,7 @@ def lowerbound(par_inf, q):
     start, end = 0, len(par_inf)
 
     for i in range(4):
-
+        print(i)
         if q[i] == -1:
             continue
         
@@ -93,7 +95,8 @@ def lowerbound(par_inf, q):
                 end=mid
             else:
                 start=mid+1
-    print("start : ",start,", end :",end)
+
+            print("//start : ",start,", end :",end)
 
     return start
 
@@ -113,8 +116,8 @@ def upperbound(par_inf, q):
                 end=mid
             else:
                 start=mid+1
-
-    print("start : ",start,", end :",end)
+        
+            print("//start : ",start,", end :",end)
     
     return start
 
@@ -135,3 +138,6 @@ solution(
            "- and - and - and - 150"]
 
           )
+
+[[0, 0, 1, 1, 260], [1, 0, 0, 0, 80], [1, 0, 0, 1, 150], [2, 0, 1, 0, 50], [2, 1, 1, 0, 150], [2, 1, 1, 0, 210]]
+[[1, 0, 0, 1, 100], [2, 1, 1, 0, 200], [0, -1, 1, 1, 250], [-1, 0, 1, -1, 150], [-1, -1, -1, 0, 100], [-1, -1, -1, -1, 150]]
