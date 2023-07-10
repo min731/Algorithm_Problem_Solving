@@ -14,5 +14,5 @@ for x in check:
 
     if array[v-1] == x:
         print(1)
-    else:
+    else:   
         print(0)
