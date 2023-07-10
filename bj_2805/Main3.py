@@ -31,5 +31,5 @@ trees = sorted(trees)
 # print(trees)
 # heights = [i for i in range(0,trees[-1]+1)]
 # print(heights)
-mid= upper_bound(M,trees)
-print(mid)
+end = upper_bound(M,trees)
+print(end)
