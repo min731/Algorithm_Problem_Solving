@@ -3,9 +3,14 @@ def solution(number, k):
     cnt = len(number)-k
     answer = ''
 
+    if cnt == 1:
+        print(max(list(number)))
+        return max(list(number))
+
     tmp = []
     # tmp = [1,9]
-    tmp = number[:-(cnt-1)]
+    tmp = number[:1-(cnt)]
+    
     while cnt>0:
 
         print("-------------")
@@ -34,6 +39,9 @@ def solution(number, k):
 
     return answer
 
-solution("1924",2)
-solution("1231234",3)
-solution("4177252841",4)
+# solution("1924",2)
+# solution("1231234",3)
+# solution("4177252841",4)
+# solution("121",1)
+solution("11",1)
+
