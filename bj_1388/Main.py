@@ -1,5 +1,6 @@
 def dfs(i,j,cnt):
 
+    # stack으로 dfs 구현
     stack = [(i,j)]
 
     while stack:
@@ -32,8 +33,10 @@ for i in range(N):
 
 cnt = 0
 
+# 전체 바닥 순회
 for i in range(N):
     for j in range(M):
+        # 순회한 곧은 -1로
         if floor[i][j] != -1:
             cnt = dfs(i,j,cnt)
 
