@@ -6,7 +6,8 @@ def solution(numbers, target) :
     
     # 값,인덱스
     stack = list([[numbers[0],0],[numbers[0]*(-1),0]])
-        
+    print(stack)
+
     while stack:
         
         v,n = stack.pop()
@@ -19,5 +20,9 @@ def solution(numbers, target) :
         else:
             if v == target:
                 answer += 1
+
+        print(stack)
     
     return answer
+
+solution([1, 1, 1, 1, 1],3)

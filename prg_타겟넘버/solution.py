@@ -20,6 +20,8 @@ def solution(numbers, target) :
         else:
             break
         
+        print(queue)
+        
     for x in queue:
         if x[0] == target:
             answer += 1
