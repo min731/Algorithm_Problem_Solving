@@ -1,0 +1,39 @@
+def solution(arr1, arr2):
+    answer = []
+    
+    arr1_n = len(arr1)
+    arr1_m = len(arr1[0])
+
+    arr2_n = len(arr2)
+    arr2_m = len(arr2[0])
+
+    transposed_arr2 = []
+
+    print("----- tr_arr2 -----")
+    for col in range(len(arr2[0])):
+        new_row = []
+        for row in range(len(arr2)):
+            new_row.append(arr2[row][col])
+        print(new_row)
+        transposed_arr2.append(new_row)
+
+    print("----- tr_arr2 -----")
+
+    # [[1, 4], [3, 2], [4, 1]]
+    for v1 in arr1:
+        
+        tmp = []
+        print("---------------")
+        # [[3, 1], [3, 1]]
+        for v2 in transposed_arr2:
+            print(v1)
+            print(v2)
+            tmp.append(sum([x*y for x,y in zip(v1,v2)]))
+        
+        answer.append(tmp)
+
+    print(answer)
+    return answer
+
+# solution([[1, 4], [3, 2], [4, 1]],[[3, 3], [3, 3]])
+solution([[2, 3, 2], [4, 2, 4], [3, 1, 4]],[[5, 4, 3], [2, 4, 1], [3, 1, 1]])
