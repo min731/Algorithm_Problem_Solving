@@ -5,8 +5,7 @@ def dfs(start,graph,visited,answer):
     stack = deque([start])
 
     while stack:
-        print("-------------")
-        print("visited : ",visited)
+
         node = stack.pop()
 
         if not visited[node]:
@@ -28,19 +27,10 @@ def solution(n, computers):
                 if computers[i-1][j-1]==1:
                     graph[i].append(j)
     
-    print("graph : ",graph)
     visited = [False for i in range(len(computers[0])+1)]
 
     for i in range(1,n+1):
-        print("-------------------------------------------")
         if not visited[i]: 
             answer,visited = dfs(i,graph,visited,answer)
-        # print("visited : ",visited)
-        # answer += 1
 
-    print(answer)
     return answer 
-
-solution(3,[[1, 1, 0],[1, 1, 0],[0, 0, 1]]) # 2
-solution(3,[[1, 1, 0], [1, 1, 1], [0, 1, 1]]) # 1
-solution(3,[[1, 0, 0], [0, 1, 0], [0, 0, 1]]) # 0
