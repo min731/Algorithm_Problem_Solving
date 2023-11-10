@@ -1,9 +1,12 @@
 def binary_search(lines,N):
     start = 0
     end = lines[0]
+    ans_list = []
 
     if N <= sum([line//end for line in lines]):
-        return end 
+        # return end 
+        print(end)
+        return
 
     # cnt = 0
     while start<=end:
@@ -28,12 +31,15 @@ def binary_search(lines,N):
         if cnt >= N:
             print("cnt : ",cnt)
             print(" K : ",N)
-            return mid
+            start = mid+1
+            ans_list.append(mid)
         
         # if cnt > N:
         #     start = mid+1
         if cnt < N:
             end = mid-1
+
+    return print(max(ans_list))
 
 K,N = map(int,input().split())
 
@@ -46,8 +52,7 @@ for _ in range(K):
 lines.sort(reverse=True)
 print(lines)
 
-ans = binary_search(lines,N)
-print(ans)
+binary_search(lines,N)
 
 # 3 7
 # 51
@@ -58,4 +63,7 @@ print(ans)
 # 10
 # 10
 # 10
+# 10
+
+# 1 1
 # 10
