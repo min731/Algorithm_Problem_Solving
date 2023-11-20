@@ -18,4 +18,20 @@ def solution(word):
     print(word_list.index(word)+1)
     return word_list.index(word)+1
 
-solution("AAAAA")
+#solution("AAAAA")
+
+arr = [[1,2,3],
+[4,5,6], 
+[7,8,9]]
+# print(zip(arr))
+print(*arr[0])
+
+for i in zip(arr):
+    print(i)
+
+arr = list([i[::-1] for i in zip(*arr)])[::-1]
+# print(arr)
+for y in arr:
+    for x in y:
+        print(x,end = ' ')
+    print()
