@@ -7,7 +7,7 @@ def solution(N, stages):
     
     stages = Counter(stages)
     print(stages)
-    print(stages.most_common())
+    print(stages.most_common()) 
     
     res = {str(i+1):0 for i in range(N)}
     # res = Counter(res)
