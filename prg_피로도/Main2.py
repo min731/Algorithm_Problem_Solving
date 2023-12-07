@@ -3,7 +3,7 @@ N = 0
 visited = []
 
 def dfs(k, cnt, dungeons):
-    # print("visited : ",visited)
+    print("visited : ",visited)
     global answer
     if cnt > answer:
         answer = cnt
@@ -14,8 +14,9 @@ def dfs(k, cnt, dungeons):
             visited[j] = 1
             # print("visited : ",visited)
             dfs(k - dungeons[j][1], cnt + 1, dungeons)
-            print("visited : ",visited)
+            # print("check visited : ",visited)
             visited[j] = 0
+            print("check visited : ",visited)
             # print("------")
             # print("visited : ",visited)
 
