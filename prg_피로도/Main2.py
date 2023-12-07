@@ -14,7 +14,11 @@ def dfs(k, cnt, dungeons):
             visited[j] = 1
             # print("visited : ",visited)
             dfs(k - dungeons[j][1], cnt + 1, dungeons)
+<<<<<<< HEAD
             # print("check visited : ",visited)
+=======
+            # print("visited : ",visited)
+>>>>>>> 7c3dde0b0718d99cf009f06202ceab1c0381ef39
             visited[j] = 0
             print("check visited : ",visited)
             # print("------")
