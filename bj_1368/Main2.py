@@ -6,7 +6,7 @@ N = int(input())
 edge = []
 cost = []
 def find_parent(ind):
-    if make_set[ind] == ind:
+    if make_set[ind] == ind: 
         return ind
     make_set[ind] = find_parent(make_set[ind])
     return make_set[ind]

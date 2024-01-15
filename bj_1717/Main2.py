@@ -7,7 +7,7 @@ def find(x):
     # return x
 
 def union(a,b):
-    a = find(a)
+    a = find(a) 
     b = find(b)
     
     if a<b:
