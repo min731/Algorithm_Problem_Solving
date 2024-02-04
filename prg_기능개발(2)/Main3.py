@@ -7,7 +7,7 @@ def solution(progresses, speeds):
 
     for idx in range(len(progresses)):
         if progresses[idx] > progresses[front]:  
-            answer.append(idx - front)
+            answer.append(idx - front) 
             front = idx 
     answer.append(len(progresses) - front)  
 
