@@ -8,7 +8,7 @@ def solution(order):
     size = len(order)
 
     for i in range(1, size + 1):  
-        stack.append(i)  #박스를 서브 컨테이너에 옮긴다
+        stack.append(i)  #박스를 서브 컨테이너에 옮긴다 
         while stack:  
             if order and stack[-1] == order[0]:  #서브 컨테이너에서 트럭으로 옮긴다
                 num = stack.pop()  
