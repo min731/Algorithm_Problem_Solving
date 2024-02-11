@@ -6,7 +6,7 @@ def solution(m, n, board):
     rm = set()
     while True:
         # 보드를 순회하며 4블록이 된 곳의 좌표를 집합에 기록
-        for i in range(m-1):
+        for i in range(m-1): 
             for j in range(n-1):
                 t = board[i][j]
                 if t == []:
