@@ -4,7 +4,7 @@ def solution(arr):
 
     def comp(x, y, n):
         init = arr[x][y]  # 해당 네모값중 하나 # 모두 같아야 통과임
-        for i in range(x, x + n):
+        for i in range(x, x + n): 
             for j in range(y, y + n):
                 if arr[i][j] != init:  # 한번이라도 다르면 그 네모는 압축불가
                     nn = n // 2
