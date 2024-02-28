@@ -1,5 +1,6 @@
 def solution(phone_book):
-        
+    
+    
     dic = {}
     for num in phone_book:
         dic[num] = 1
