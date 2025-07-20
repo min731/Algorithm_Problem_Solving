@@ -5,7 +5,6 @@ stack=[]
 for i in range(N):
     order=sys.stdin.readline().split()
 
-
     if "push" in order:
         stack.append(order[-1])
     elif "pop" in order:

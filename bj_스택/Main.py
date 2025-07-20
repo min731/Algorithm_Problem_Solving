@@ -29,7 +29,3 @@ for _ in range(n):
             arr.append(el)
         else:
             print(-1)
-
-
-
-# print(command)
